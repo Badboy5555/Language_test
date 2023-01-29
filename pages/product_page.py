@@ -27,3 +27,8 @@ class ProductPage(BasePage):
     def should_be_true_price_of_the_item(self):
         assert self.product_price() in self.elements_present(*ProductPageLocators.PRODUCT_CART_PRICE)[0], "Not a true price of the item"
 
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.PRODUCT_MESSAGE),"Message is present"
+
+    def should_be_hiding_message(self):
+        assert not self.is_disappeared(*ProductPageLocators.PRODUCT_MESSAGE), "Element is still present"
