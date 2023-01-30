@@ -19,3 +19,8 @@ class ProductPageLocators():
     PRODUCT_CART_PRICE_MESSAGE = (By.CSS_SELECTOR, ".alertinner>p")
     PRODUCT_CART_PRICE = (By.CSS_SELECTOR, ".alertinner>p strong")
     PRODUCT_PRICE = (By.CSS_SELECTOR, ".product_main p.price_color")
+
+class BasketPageLocators():
+    BASKET_LINK = (By.CSS_SELECTOR, ".btn-group>a")
+    BASKET_EMPTY_MESSAGE = (By.CSS_SELECTOR, "#content_inner")
+    BASKET_WITH_ITEMS_MESSAGE = (By.CSS_SELECTOR, "#content_inner .row>h2")
