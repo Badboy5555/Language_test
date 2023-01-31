@@ -1,8 +1,8 @@
 from selenium.common.exceptions import NoSuchElementException, NoAlertPresentException, TimeoutException
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import math, time
-from locators import BasePageLocators, BasketPageLocators
+import math
+from pages.locators import BasePageLocators, BasketPageLocators
 
 class BasePage():
     def __init__(self, driver, url, timeout=5):
@@ -36,10 +36,8 @@ class BasePage():
         x = alert.text.split(" ")[2]
         answer = str(math.log(abs((12 * math.sin(float(x))))))
         alert.send_keys(answer)
-        #time.sleep(2)
         alert.accept()
         try:
-            #time.sleep(15)
             alert = self.browser.switch_to.alert
             alert_text = alert.text
             print(f"Your code: {alert_text}")

@@ -1,6 +1,6 @@
 from selenium.webdriver.common.by import By
 from .base_page import BasePage
-from locators import ProductPageLocators
+from pages.locators import ProductPageLocators
 
 class ProductPage(BasePage):
     def add_item_to_cart(self):
