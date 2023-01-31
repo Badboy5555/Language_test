@@ -54,8 +54,9 @@ def test_guest_can_add_product_to_basket(browser, link):
     page.should_be_true_name_of_the_item()
     page.should_be_product_cart_price_message()
     page.should_be_true_price_of_the_item()
-    page.should_not_be_success_message()
-    page.should_be_hiding_message()
+    '''__Отрицательные тесты: должны заканчиваться ошибкой__'''
+    #page.should_not_be_success_message()
+    #page.should_be_hiding_message()
 
 def test_guest_cant_see_success_message_after_adding_product_to_basket(browser):
     link = 'http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=newYear2019'
