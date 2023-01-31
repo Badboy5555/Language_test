@@ -17,13 +17,13 @@ class TestLoginFromMainPage():
         page.open()
         page.should_be_login_link()
 
-def est_should_be_login_page(browser):
+def test_should_be_login_page(browser):
     link='http://selenium1py.pythonanywhere.com/ru/accounts/login/'
     page = LoginPage(browser, link)
     page.open()
     page.should_be_login_page()
 
-def est_guest_can_go_to_login_page(browser):
+def test_guest_can_go_to_login_page(browser):
     link = "http://selenium1py.pythonanywhere.com/"
     page = MainPage(browser, link)
     page.open()
