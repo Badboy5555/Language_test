@@ -5,7 +5,7 @@ from locators import ProductPageLocators
 class ProductPage(BasePage):
     def add_item_to_cart(self):
         self.browser.find_element(*ProductPageLocators.ADD_BUTTON).click()
-        self.solve_quiz_and_get_code()
+        #self.solve_quiz_and_get_code()
 
     def should_be_a_message(self):
         assert 'был добавлен в вашу корзину' in self.elements_present(*ProductPageLocators.PRODUCT_MESSAGE)[0],"No acception message for item've added to cart"

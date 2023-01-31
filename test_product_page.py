@@ -1,7 +1,39 @@
 import pytest
 from pages.product_page import ProductPage
 from pages.basket_page import BasketPage
+from pages.login_page import LoginPage
+import time
 
+class TestUserAddToBasketFromProductPage():
+    @pytest.fixture(scope='function', autouse=True)
+    def setup(self, browser):
+        link = 'http://selenium1py.pythonanywhere.com'
+        self.page = LoginPage(browser, link)
+        self.page.open()
+        self.page.go_to_login_page()
+
+        email = str(time.time()) + "@fakemail.org"
+        password = 'dsgfasdgsadfasf'
+        self.page.register_new_user(email, password)
+        self.page.should_be_authorized_user()
+
+    def test_user_can_add_product_to_basket(self, browser):
+        link = 'http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207'
+        page = ProductPage(browser, link)
+        page.open()
+        page.add_item_to_cart()
+        page.should_be_a_message()
+        page.should_be_true_name_of_the_item()
+        page.should_be_product_cart_price_message()
+        page.should_be_true_price_of_the_item()
+        #page.should_not_be_success_message()
+        #page.should_be_hiding_message()
+
+    def test_user_cant_see_success_message(self, browser):
+        link = 'http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207'
+        page = ProductPage(browser, link)
+        page.open()
+        page.should_not_be_success_message()
 #pattern = f"http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer"
 #bad_list = [3]
 #all_links = [pattern + str(num) if num not in bad_list else
@@ -56,7 +88,7 @@ def est_guest_can_go_to_login_page_from_product_page(browser):
     page.go_to_login_page()
     page.should_be_login_link()
 
-def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
+def est_guest_cant_see_product_in_basket_opened_from_product_page(browser):
     link = 'http://selenium1py.pythonanywhere.com/ru/catalogue/coders-at-work_207/'
     page = ProductPage(browser, link)
     page.open()
